@@ -28,6 +28,12 @@ RUN cp ioncube/*.so /usr/lib/php5/2*/
 RUN echo zend_extension = /usr/lib/php5/2*/ioncube_loader_lin_5.6.so > /etc/php5/apache2/conf.d/00-ioncube.ini
 # RUN service apache2 restart
 
+# Override Default web root
+RUN ["bin/bash", "-c", "sed -i 's/DocumentRoot \\/var\\/www/DocumentRoot \\/var\\/www\\/html/g' /etc/apache2/sites-available/default"]
+RUN ["bin/bash", "-c", "sed -i 's/Directory \\/var\\/www/Directory \\/var\\/www\\/html/g' /etc/apache2/sites-available/default"]
+RUN ["bin/bash", "-c", "sed -i 's/DocumentRoot \\/var\\/www/DocumentRoot \\/var\\/www\\/html/g' /etc/apache2/sites-available/default-ssl"]
+RUN ["bin/bash", "-c", "sed -i 's/Directory \\/var\\/www/Directory \\/var\\/www\\/html/g' /etc/apache2/sites-available/default-ssl"]
+
 # Configure apache
 RUN a2enmod rewrite
 RUN a2enmod ssl
