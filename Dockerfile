@@ -25,7 +25,7 @@ RUN echo xdebug.max_nesting_level=200 >> /etc/php5/apache2/php.ini
 RUN wget http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz
 RUN tar xvfz ioncube_loaders_lin_x86-64.tar.gz
 RUN cp ioncube/*.so /usr/lib/php5/2*/
-RUN echo zend_extension = /usr/lib/php5/2*/ioncube_loader_lin_5.6.so > /etc/php5/apache2/conf.d/00-ioncube.ini
+RUN echo zend_extension = /usr/lib/php5/2*/ioncube_loader_lin_5.4.so > /etc/php5/apache2/conf.d/00-ioncube.ini
 # RUN service apache2 restart
 
 # Override Default web root
